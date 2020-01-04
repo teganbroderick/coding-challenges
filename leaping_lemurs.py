@@ -12,16 +12,21 @@ def how_many_leaps(branch_list):
     while branch_list != []:
         if len(branch_list) >= 3:
             if branch_list[2] == 0:
-                count += 2
-                branch_list.pop(0)
-                branch_list.pop(0)
-            if branch_list[2] != 0:
                 count += 1
+                # print(count)
+                branch_list.pop(0)
+                branch_list.pop(0)
+            elif branch_list[2] != 0:
+                count += 1
+                # print(count)
                 branch_list.pop(0)
         else:
-            count += 1
-            branch_list.pop(0)
-            branch_list.pop(0)
+            if len(branch_list) == 1:
+                branch_list.pop(0)
+            elif len(branch_list) == 2:
+                count += 1
+                branch_list.pop(0)
+                branch_list.pop(0)
 
     return count
 
