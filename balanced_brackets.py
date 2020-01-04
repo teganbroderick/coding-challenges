@@ -27,7 +27,6 @@ def is_balanced(string):
         return True
 
 
-
 print(is_balanced("<ok>"))
 
 print(is_balanced("{[[This has too many open square brackets.]}"))
