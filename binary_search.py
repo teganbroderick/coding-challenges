@@ -7,20 +7,26 @@ def binary_search(val):
 
     number = 100
     remainder = 100
-    
+
     while number != val:
 
         if val < number:
-            print(number)
+            # print(number)
+            # print("remainder", remainder)
             num_guesses += 1
             remainder = remainder // 2
             number = number - remainder
         else:
             num_guesses += 1
-            print(number)
+            # print("num", number)
+            # print("remainder", remainder)
+            remainder = remainder // 2
             number = number + remainder
 
     return num_guesses
 
 print(binary_search(50))
+print("")
 print(binary_search(31))
+print("")
+print(binary_search(25))
