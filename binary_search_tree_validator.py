@@ -11,12 +11,16 @@ class Node:
     def is_valid(self):
         """Is this tree a valid BST?"""
         print("in function", self.data)
-        
+        #while there are nodes to traverse
         if self.left != None or self.right != None:
+            #if left node data is less that root, and right node data is greater than root
             if self.left.data < self.data and self.right.data > self.data:
+                #conditions satisfied, keep traversing tree
+                #run method on left node and right node
                 self.left.is_valid()
                 self.right.is_valid()
             else:
+                #conditions not satisfied, return false
                 return False
         
         return True
