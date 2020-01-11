@@ -3,7 +3,7 @@ def rev_string(astring):
 
     You may NOT use the reversed() function!
     """
-    if len(astring) < 2:
+    if len(astring) == 1:
         return astring
     
     return astring[-1] + rev_string(astring[:-1])
