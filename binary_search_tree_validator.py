@@ -10,14 +10,16 @@ class Node:
         
     def is_valid(self):
         """Is this tree a valid BST?"""
+        print("in function", self.data)
         
-        if self.left.data < self.data and self.right.data > self.data:
-            self.left.is_valid()
-            self.right.is_valid()
-        else:
-            return False
+        if self.left != None or self.right != None:
+            if self.left.data < self.data and self.right.data > self.data:
+                self.left.is_valid()
+                self.right.is_valid()
+            else:
+                return False
         
         return True
 
 t = Node(4, Node(2, Node(1), Node(3)), Node(6, Node(5), Node(7)))
-t.is_valid()
+print(t.is_valid())
