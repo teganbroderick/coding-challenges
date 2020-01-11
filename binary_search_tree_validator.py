@@ -21,9 +21,13 @@ class Node:
                 self.right.is_valid()
             else:
                 #conditions not satisfied, return false
+                print("in else conditional", self.data)
                 return False
         #tree traversed, conditions met, return true
         return True
 
 t = Node(4, Node(2, Node(1), Node(3)), Node(6, Node(5), Node(7)))
+print(t.is_valid())
+
+t = Node(4, Node(2, Node(3), Node(3)), Node(6, Node(5), Node(7)))
 print(t.is_valid())
