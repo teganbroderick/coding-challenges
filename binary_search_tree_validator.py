@@ -22,7 +22,7 @@ class Node:
             else:
                 #conditions not satisfied, return false
                 return False
-        
+        #tree traversed, conditions met, return true
         return True
 
 t = Node(4, Node(2, Node(1), Node(3)), Node(6, Node(5), Node(7)))
