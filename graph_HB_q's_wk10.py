@@ -41,3 +41,30 @@ def connect_nodes(node):
                 seen_nodes.add(adj_node)
                 nodes_to_check.append(node)
 
+
+"""
+Write a function that takes in two Node objects and returns True if the nodes are connected to one another.
+"""
+
+def are_nodes_adjacent(node1, node2):
+    """return True if nodes are adjacent to one another"""
+
+    seen_set = set()
+    nodes_to_check = [node1]
+
+    while nodes_to_check != []:
+        current = nodes_to_check.pop()
+        adj_nodes = current.adjacent
+        for adj_node in adj_nodes:
+            if adj_node not in seen_set:
+                seen_set.add(adj_node)
+                nodes_to_check.append(adj_node)
+
+    if node2 in seen_set:
+        return True
+
+
+
+
+
+
