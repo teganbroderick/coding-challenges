@@ -23,3 +23,21 @@ class Node:
     def __init__(self, data, adjacent=None):
         self.data = data
         self.adjacent = adjacent or set()
+
+""" Challenge 2: Write a function that takes in a Node object and prints all connected nodes."""
+
+def connect_nodes(node):
+    """print nodes connected to input node"""
+
+    seen_nodes = set()
+    nodes_to_check = [node]
+
+    while nodes_to_check != []:
+        current = nodes_to_check.pop()
+        adj_nodes = current.adjacent
+        
+        for adj_node in adj_nodes:
+            if adj_node not in seen_nodes:
+                seen_nodes.add(adj_node)
+                nodes_to_check.append(node)
+
