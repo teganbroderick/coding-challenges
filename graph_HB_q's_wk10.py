@@ -82,7 +82,27 @@ def are_nodes_connected(node1, node2):
                 seen_set.add(adj_node)
                 nodes_to_check.append(adj_node)
 
+"""Challenge 4
+An edge is a connection between two nodes. 
+For example, this graph (left) has the following edges (right).
+Write a function that takes in a Node and returns a list of edges.
+"""
+def list_of_edges(node):
+    """return list of edges for node parameter"""
+    
+    seen_set = set(node)
+    nodes_to_check = [node]
+    edges = []
 
+    while nodes_to_check != []:
+        current = nodes_to_check.pop()
+
+        adjacent_nodes = current.adjacent
+        for adj_node in adjacent_nodes:
+            if adj_node not in seen_set:
+                seen_set.add(adjacent_node)
+                nodes_to_check.append(adj_node)
+                edges.append(current, adj_node)
 
 
 
