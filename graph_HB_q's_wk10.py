@@ -79,8 +79,9 @@ def are_nodes_connected(node1, node2):
             if adj_nodes = node2:
                 return True
             else:
-                seen_set.add(adj_node)
-                nodes_to_check.append(adj_node)
+                if adj_node not in seen_set:
+                    seen_set.add(adj_node)
+                    nodes_to_check.append(adj_node)
 
 """Challenge 4
 An edge is a connection between two nodes. 
@@ -103,44 +104,4 @@ def list_of_edges(node):
                 seen_set.add(adjacent_node)
                 nodes_to_check.append(adj_node)
                 edges.append(current, adj_node)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
