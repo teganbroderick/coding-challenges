@@ -99,6 +99,7 @@ def find_center_of_matrix(matrix):
 
     return (row, col)
 
+
 def how_many_carrots_eaten(matrix):
     """return how many carrots are eaten by the rabbit in a 2D matrix"""
     
@@ -113,9 +114,10 @@ def how_many_carrots_eaten(matrix):
     #init squares visited
     squares_visited = []
     
-    #find square either up, down left, right with most carrots
+    #start with current at starting point
     current = matrix[row][col]
     print("current",current)
+    
     while current!= 0:
         carrot_count += matrix[row][col]
         print("carrot count", carrot_count)
@@ -125,47 +127,50 @@ def how_many_carrots_eaten(matrix):
         print("col", col)
         print("row", row)
 
-        #check for whether you can go up, down, left, right based on position in matrix
-        #check for whether adj nodes are in squares_visited
-        #compare squares that havent been visited
+        #check adjacent squares, see if they exist and if they have been visited
+        #if they exist and have not been visited, add to dictionary
+        #dict key is value at square, dict value is (row, col) tuple
+        compare_adj_squares_dict = {}
+        #up
+        if row != 0 and (row-1,col) not in squares_visited:
+            adj_square_up = matrix[row-1][col]
+            compare_adj_squares_dict[matrix[row-1][col]] = (row-1, col)
+        #down
+        if row != (len(matrix) -1) and (row+1,col) not in squares_visited:
+            adj_square_down = matrix[row+1][col]
+            compare_adj_squares_dict[matrix[row+1][col]] = (row+1, col)
+        #left
+        if col != 0 and (row,col-1) not in squares_visited:
+            adj_square_left = matrix[row][col-1]
+            compare_adj_squares_dict[matrix[row][col-1]] = (row, col-1)
+        #right
+        if col != len(matrix[0]) and (row,col+1) not in squares_visited:
+            adj_square_right = matrix[row][col+1]
+            compare_adj_squares_dict[matrix[row][col+1]] = (row, col+1)
+        print(compare_adj_squares_dict)
         
-        #down
-        adj_square1 = matrix[row+1][col]
-        #up
-        adj_square2 = matrix[row-1][col]
-        #right
-        adj_square3 = matrix[row][col+1]
-        #left
-        adj_square4 = matrix[row][col-1]
+        #find square with max value in dict
+        sorted_val_list = []
+        for key,value in sorted(compare_adj_squares_dict.items()):
+            print("key", key)
+            print("value", value)
 
-        #down
-        if row != (len(matrix) -1) and adj_square1 > adj_square2 and adj_square1 > adj_square3 and adj_square1 > adj_square4 and (row+1,col) not in squares_visited:
-            current = matrix[row+1][col]
-            row = row + 1
-            print("current",current)
-        #up
-        elif row != 0 and adj_square2 > adj_square1 and adj_square2 > adj_square3 and adj_square2 > adj_square4 and (row-1,col) not in squares_visited:
-            current = matrix[row-1][col]
-            row = row - 1
-            print("current",current)
-        #right
-        elif col != len(matrix[0]) and adj_square3 > adj_square1 and adj_square3 > adj_square3 and adj_square3 > adj_square4 and (row,col + 1) not in squares_visited:
-            current = matrix[row][col + 1]
-            col = col + 1
-            print("current", current)
-        #left
-        elif col != 0 and adj_square4 > adj_square1 and adj_square4 > adj_square3 and adj_square4 > adj_square2 and (row,col-1) not in squares_visited:
-            current = matrix[row][col - 1]
-            col = col-1
-            print("current",current)
+            sorted_val_list.append((key,value))
+        print(sorted_val_list)
 
-        else:
-            print("break")
-            break
-    
+        max_val = sorted_val_list[-1][0]
+        print("max_val", max_val)
+        row = sorted_val_list[-1][1][0]
+        print("row",row)
+        col = sorted_val_list[-1][1][1]
+        print("col",col)
+        current = matrix[row][col]
+        print("current",current)
+        
     #return carrot count
     print("final carrot count", carrot_count)
     return carrot_count
+
 
 rabbit_matrix =     [[5, 7, 8, 6, 3],
                     [0, 0, 7, 0, 4],
@@ -173,12 +178,11 @@ rabbit_matrix =     [[5, 7, 8, 6, 3],
                     [3, 1, 0, 5, 8]]
 
 rabbit_matrix_zeroed = [[0, 0, 0, 0, 0],
-                    [0, 0, 7, 0, 0],
-                    [0, 6, 3, 4, 0],
+                    [0, 0, 2, 0, 0],
+                    [2, 6, 3, 4, 0],
                     [0, 0, 0, 0, 0]]
 
 print(how_many_carrots_eaten(rabbit_matrix))
-print("")
 print(how_many_carrots_eaten(rabbit_matrix_zeroed))
 
 
