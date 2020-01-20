@@ -8,7 +8,7 @@ def lemonadeChange(bills):
     for bill in bills:
         if bill == 5:
             num_5s += 1
-            print("PLUS 5, num 5s", num_5s, "num 10s", num_10s)
+            # print("PLUS 5, num 5s", num_5s, "num 10s", num_10s)
         
         if bill == 10:
             if num_5s == 0:
@@ -16,7 +16,7 @@ def lemonadeChange(bills):
             else:
                 num_10s += 1
                 num_5s -= 1
-                print("PLUS 10, num 5s", num_5s, "num 10s", num_10s)
+                # print("PLUS 10, num 5s", num_5s, "num 10s", num_10s)
                 
         if bill == 20:
             #no 5s
@@ -28,14 +28,14 @@ def lemonadeChange(bills):
             #no 10s, all 5s
             if num_10s == 0 and num_5s >=3:
                 num_5s -= 3
-                print("MINUS 3 5's, num 5s", num_5s, "num 10s", num_10s)
+                # print("MINUS 3 5's, num 5s", num_5s, "num 10s", num_10s)
             #one 10, one 5
             if num_10s >=1 and num_5s >= 1:
                 num_10s -= 1
                 num_5s -= 1
-                print("MINUS one 5 one 10, num 5s", num_5s, "num 10s", num_10s)
+                # print("MINUS one 5 one 10, num 5s", num_5s, "num 10s", num_10s)
         
-        return True
+    return True
 
 print(lemonadeChange([5,5,10,10,20]))
 
