@@ -34,14 +34,14 @@ def find_center_of_matrix(matrix):
     #find center
     #if there is an exact center
     if center_column_odd != None and center_row_odd != None:
-        print("exact center")
+        # print("exact center")
         starting_point = matrix[center_row_odd][center_column_odd]
         col = center_column_odd
         row = center_row_odd
 
     #if num rows is odd, but num columns is even
     elif center_row_odd != None and center_column != None and center_column2 != None:
-        print("odd num of rows")
+        # print("odd num of rows")
         #find larger number in matrix
         starting_point1 = matrix[center_row_odd][center_column]
         starting_point2 = matrix[center_row_odd][center_column2]
@@ -54,10 +54,10 @@ def find_center_of_matrix(matrix):
             starting_point = starting_point2
             col = center_column2
             row = center_row_odd
-    #if num columns is odd, but num rows is even
     
+    #if num columns is odd, but num rows is even
     elif center_column_odd != None and center_row != None and center_row2 != None:
-        print("odd num of cols")
+        # print("odd num of cols")
         #find larger number in matrix
         starting_point1 = matrix[center_row][center_column_odd]
         starting_point2 = matrix[center_row2][center_column_odd]
@@ -71,10 +71,9 @@ def find_center_of_matrix(matrix):
             col = center_column_odd
             row = center_row2            
 
-    #if num rows is even and num columns is even
-    
+    #if num rows is even and num columns is even 
     elif center_column != None and center_column2 != None and center_row != None and center_row2 != None:
-        print("odd num of rows and cols")
+        # print("odd num of rows and cols")
         starting_point1 = matrix[center_row][center_column]
         starting_point2 = matrix[center_row][center_column2]
         starting_point3 = matrix[center_row2][center_column]
@@ -99,12 +98,11 @@ def find_center_of_matrix(matrix):
 
     return (row, col)
 
-
 def how_many_carrots_eaten(matrix):
     """return how many carrots are eaten by the rabbit in a 2D matrix"""
     
     starting_point = find_center_of_matrix(matrix)
-    print("starting_point", starting_point)
+    # print("starting_point", starting_point)
     row = starting_point[0]
     col = starting_point[1]
 
@@ -116,16 +114,12 @@ def how_many_carrots_eaten(matrix):
     
     #start with current at starting point
     current = matrix[row][col]
-    print("current",current)
     
     while current!= 0:
         carrot_count += matrix[row][col]
-        print("carrot count", carrot_count)
+        # print(carrot_count)
         squares_visited.append((row,col))
-        print(squares_visited)
-
-        print("col", col)
-        print("row", row)
+        # print(squares_visited)
 
         #check adjacent squares, see if they exist and if they have been visited
         #if they exist and have not been visited, add to dictionary
@@ -147,35 +141,28 @@ def how_many_carrots_eaten(matrix):
         if col != len(matrix[0]) and (row,col+1) not in squares_visited:
             adj_square_right = matrix[row][col+1]
             compare_adj_squares_dict[matrix[row][col+1]] = (row, col+1)
-        print(compare_adj_squares_dict)
+        # print(compare_adj_squares_dict)
         
         #find square with max value in dict
         sorted_val_list = []
         for key,value in sorted(compare_adj_squares_dict.items()):
-            print("key", key)
-            print("value", value)
-
             sorted_val_list.append((key,value))
-        print(sorted_val_list)
+        # print(sorted_val_list)
 
         max_val = sorted_val_list[-1][0]
-        print("max_val", max_val)
         row = sorted_val_list[-1][1][0]
-        print("row",row)
         col = sorted_val_list[-1][1][1]
-        print("col",col)
         current = matrix[row][col]
-        print("current",current)
         
     #return carrot count
-    print("final carrot count", carrot_count)
+    # print("final carrot count", carrot_count)
     return carrot_count
 
-
+#Code for testing
 rabbit_matrix =     [[5, 7, 8, 6, 3],
-                    [0, 0, 7, 0, 4],
+                    [2, 4, 7, 1, 4],
                     [4, 6, 3, 4, 9],
-                    [3, 1, 0, 5, 8]]
+                    [3, 1, 6, 5, 8]]
 
 rabbit_matrix_zeroed = [[0, 0, 0, 0, 0],
                     [0, 0, 2, 0, 0],
