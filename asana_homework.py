@@ -160,9 +160,9 @@ def how_many_carrots_eaten(matrix):
 
 #Code for testing
 rabbit_matrix =     [[5, 7, 8, 6, 3],
-                    [2, 4, 7, 1, 4],
+                    [0, 0, 7, 0, 4],
                     [4, 6, 3, 4, 9],
-                    [3, 1, 6, 5, 8]]
+                    [3, 1, 0, 5, 8]]
 
 rabbit_matrix_zeroed = [[0, 0, 0, 0, 0],
                     [0, 0, 2, 0, 0],
