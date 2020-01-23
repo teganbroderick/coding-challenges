@@ -11,11 +11,20 @@ def minDepth(root_node):
 
     while to_check != []:
         current = to_check.pop(0)
-        if current.left != None:
+        if current.left != None and current.right != None:
+            to_check.append(current.left)
+            to_check.append(current.right)
+            seen_list.append(current.left)   
+            seen_list.append(current.right) 
+            
+        if current.left != None and current.right == None:
             to_check.append(current.left)
             seen_list.append(current.left)
-        if current.right != None:
+
+        if current.right != None and current.left == None:
             to_check.append(current.right)
             seen_list.append(current.right)
+
+
 
 
