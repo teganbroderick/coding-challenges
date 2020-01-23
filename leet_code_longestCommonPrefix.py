@@ -26,7 +26,7 @@ def longestCommonPrefix(strs):
 
         if matches == len(strs):
             prefix_list.append(letter_to_compare)
-        else:
+        else: 
             break
 
     prefix_string = "".join(prefix_list)
