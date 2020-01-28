@@ -7,16 +7,20 @@ def max_profit_of_stocks(stock_prices):
     if len(stock_prices) < 2:
         print("Max profit does not exist. List must have more than one value in order to trade stocks.")
 
-    #all positive integers
     min_price = stock_prices[0]
-    max_profit = 0
+    max_profit = stock_prices[1] - stock_prices[0]
 
-    for current_price in stock_prices:
+    #start at index one, because we can't buy and sell at index 0
+    for i in range(1, len(stock_prices)):
+        current_price = stock_prices[i]
+        
+        #Can we get a better profit by buying at min_price and selling at the current_price
+        difference = current_price - min_price
+        max_profit = max(max_profit, difference)
+        
+        #update minimum price
         min_price = min(min_price, current_price)
 
-        difference = current_price - min_price
-
-        max_profit = max(max_profit, difference)
 
     return max_profit
 
