@@ -33,7 +33,7 @@ def max_cake_haul(cake_tuples, capacity):
                 # Is it worth taking the cake? how does the value using the cake compare to the current_max_value?
                 current_max_value = max(max_value_using_cake, current_max_value)
 
-            max_values_at_capacities[current_capacity] = current_max_value
+                max_values_at_capacities[current_capacity] = current_max_value
     
     #return value from max vals at capacities list for input capacity
     return max_values_at_capacities[capacity]
