@@ -41,28 +41,21 @@ def steps(n):
     You can climb 1, 2, or 3 steps at a time.
     """
 
-    # #__________________________________
-    # #recursive approach with caching
-
-    #cache holds results of taking each number of staircase steps
-    if n == 0 or n==1:
+    #__________________________________
+    #bottom up approach with caching
+    if n == 1 or n == 0:
         return 1
-
-    if n == 2:
-        return 2
-
+    
     cache = [0] * (n+1)
     cache[0] = 1
     cache[1] = 1
     cache[2] = 2
-    
-    # print(cache)
-    #iterate through steps, calculating num of combinations and adding to cache
-    for i in range(2,n+1):
+
+    for i in range(3, n+1):
         cache[i] = cache[i-1] + cache[i-2] + cache[i-3]
 
     return cache[n]
-
+    
     #__________________________________
     #recursive approach without caching
 
